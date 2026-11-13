@@ -1,0 +1,26 @@
+[package]
+name = "bbc-sign"
+description = "Offline signer for a BNB Beacon Chain token recovery. Contains no networking code."
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+publish = false
+
+[dependencies]
+bbc-core = { path = "../core" }
+# secp256k1 ECDSA signing (RFC 6979), RustCrypto
+k256 = { version = "0.13", features = ["ecdsa", "sha256"] }
+# BIP39 phrase -> seed (rust-bitcoin project); wipes the mnemonic on drop
+bip39 = { version = "2.2", features = ["zeroize"] }
+# BIP32 derivation m/44'/714'/a'/0/i (RustCrypto/iqlusion), k256 backend only
+bip32 = { version = "0.5", default-features = false, features = ["secp256k1", "std"] }
+# USB HID transport + APDU types for the Ledger (Zondax)
+ledger-transport-hid = "0.11"
+ledger-apdu = "0.11"
+# Hidden terminal input for secrets
+rpassword = "7"
+zeroize = "1"
+hex = "0.4"
+serde_json = "1"
+clap = { version = "4", features = ["derive"] }

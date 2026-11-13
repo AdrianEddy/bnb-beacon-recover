@@ -1,0 +1,9 @@
+/target
+
+# Your recovery files. Keep them (they are your record of what was signed and sent),
+# but never commit or publish them.
+signed-recovery*.json
+approve-response.json
+recover-payload*.json
+recover-tx*.json
+withdraw-tx*.json

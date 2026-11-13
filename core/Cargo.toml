@@ -1,0 +1,23 @@
+[package]
+name = "bbc-core"
+description = "Network-free shared logic: recovery message construction, Beacon Chain address derivation, signature checks"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+publish = false
+
+[dependencies]
+# secp256k1 ECDSA (RustCrypto): signature verification and low-S checks
+k256 = { version = "0.13", features = ["ecdsa", "sha256"] }
+# SHA-256 + RIPEMD-160 for Beacon Chain address derivation
+sha2 = "0.10"
+ripemd = "0.1"
+# bech32 "bnb1..." address encoding
+bech32 = "0.11"
+hex = "0.4"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+# EIP-55 checksummed BSC address parsing
+alloy-primitives = { version = "1", default-features = false, features = ["std"] }
+thiserror = "2"
